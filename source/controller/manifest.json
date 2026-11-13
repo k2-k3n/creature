@@ -1,0 +1,26 @@
+{
+  "controllerVersion": "0.5.0",
+  "enabled": true,
+  "entries": {
+    "mobile": "mobile/index.html",
+    "web": "web/index.html"
+  },
+  "entry": "mobile/index.html",
+  "format": "clcontrol",
+  "id": "org.resona.demo.creature.controller",
+  "interfaces": [
+    "web",
+    "mobile"
+  ],
+  "name": "Creature",
+  "permissions": [
+    "midi"
+  ],
+  "target": {
+    "appId": "org.resona.demo.creature",
+    "appName": "Creature",
+    "appVersion": "0.5.0",
+    "protocolVersion": 1
+  },
+  "version": 1
+}

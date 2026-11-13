@@ -1,0 +1,31 @@
+{
+  "folder": "08-Creature",
+  "description": "画面中的生物跟着 Wah 踏板动作张嘴，并可调 Growl。",
+  "app": {
+    "file": "App.rpk",
+    "id": "org.resona.demo.creature",
+    "name": "Creature",
+    "version": "0.5.3",
+    "kind": 1,
+    "bytes": 168000,
+    "sha256": "816946fc302e1f47a34a337b98dc8dfdaa696a585f8b075df6eb49f60a4f0b33",
+    "crc32": 3809694273
+  },
+  "audio_packs": [
+    {
+      "file": "Audio-Pack.rpk",
+      "id": "org.resona.demo.creature.voice",
+      "name": "Creature Voice",
+      "version": "0.2.4",
+      "kind": 0,
+      "bytes": 4340,
+      "sha256": "97aade6766d313aee51cc487b791fae8efd2e078c8ed5647ede74cb74fe739e3",
+      "crc32": 3985681742
+    }
+  ],
+  "source": "source/",
+  "cover": "界面.png",
+  "license_file_present": true,
+  "host_build_check": "passed",
+  "community_upload": "not sent"
+}

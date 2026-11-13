@@ -1,0 +1,11 @@
+{
+  "name": "Creature",
+  "id": "org.resona.demo.creature",
+  "version": "0.5.3",
+  "api": 1,
+  "description": "The approved painting rigged in 2D as a wah pedal: hold the big knob to rock a Vox-style wah (the creature's mouth opens with it), turn it for growl; the top knob picks the wah voicing.",
+  "kind": "app",
+  "sources": [
+    "src/app.cpp"
+  ]
+}

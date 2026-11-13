@@ -1,0 +1,10 @@
+{
+  "name": "Creature Voice",
+  "id": "org.resona.demo.creature.voice",
+  "version": "0.2.4",
+  "api": 1,
+  "description": "Mono wah into growl: a pedal-position wah (four voicings, even loudness through the sweep) driving a level-matched soft-clip growl.",
+  "sources": [
+    "src/main.cpp"
+  ]
+}
