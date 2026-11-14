@@ -128,9 +128,9 @@ inline void spring(Spring &s, float to, float hz, float zeta, float dt) {
 // pedal 0..1 is the wah position (the app mirrors the voice's stroke): the mouth is the pedal, "oo" at the heel
 // to a wide "aa" at the toe, with the head lifting and the eyes squeezing as it opens.
 inline void update(Rig &r, Shared &sh, uint32_t ms, float pedal, float activity, int growl) {
- const float dt = ms / 1000.f; r.t += ms; r.pedal = pedal;
+ const float dt = (ms > 42u ? 42u : ms) / 1000.f; r.t += ms; r.pedal = pedal;
  const float g = growl / 100.f, rest = .5f + .15f * g;          // "oo" at rest
- spring(r.open, rest + (1.12f - rest) * pedal, 3.2f, .78f, dt);   // quick enough to follow wah-wah taps
+ spring(r.open, rest + (1.12f - rest) * pedal, 4.1f, 1.0f, dt);   // follow short Wah taps without overshooting the target
  spring(r.tilt, -.075f * pedal, 2.f, .8f, dt); spring(r.lift, 7 * pedal, 2.f, .8f, dt);
  spring(r.inflate, .03f * pedal - .01f * (1 - pedal), 1.4f, .7f, dt);
  spring(r.squint, .55f * pedal * pedal, 2.6f, .9f, dt);

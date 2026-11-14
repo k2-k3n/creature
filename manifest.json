@@ -5,11 +5,11 @@
     "file": "App.rpk",
     "id": "org.resona.demo.creature",
     "name": "Creature",
-    "version": "0.5.3",
+    "version": "0.5.4",
     "kind": 1,
-    "bytes": 168000,
-    "sha256": "816946fc302e1f47a34a337b98dc8dfdaa696a585f8b075df6eb49f60a4f0b33",
-    "crc32": 3809694273
+    "bytes": 157328,
+    "sha256": "7e218e0d416154b0b6e94cad9a0c5cbe07b7d4320cd827860f92b9067df221f2",
+    "crc32": 809283716
   },
   "audio_packs": [
     {

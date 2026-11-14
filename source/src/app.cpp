@@ -102,6 +102,8 @@ const uint16_t kGround=RESONA_RGB(37,10,33);
 void draw(State *s){
  uint16_t *px=nullptr;uint32_t stride=0;resona_ui *ui=P->screen_begin(&px,&stride);if(!ui||!px)return;
  const uint16_t ink=RESONA_RGB(255,248,219),green=RESONA_RGB(166,189,83);
+ constexpr uint32_t introMs=340;
+ const bool revealing=s->now<introMs;
  if(s->sh)rig::render(s->rig,*s->sh,px,stride,rig::litSegments(s->rig,growlNow(s)),P->millis);
  else ui->clear(ui->ctx,kGround);
  // the corners, all in the wordmark's style
@@ -121,12 +123,27 @@ void draw(State *s){
  }
 #endif
  if(!s->sh)ui->text(ui->ctx,6,90,1,RESONA_RGB(255,195,128),"NOT ENOUGH APP MEMORY");
+ if(revealing){
+  const float t=static_cast<float>(s->now)/introMs;
+  const unsigned gain=static_cast<unsigned>(256.f*t*t*(3.f-2.f*t)+.5f);
+  const unsigned rest=256-gain;
+  for(int y=0;y<172;++y){
+   uint16_t *row=px+y*stride;
+   for(int x=0;x<320;++x){
+    const unsigned p=row[x];
+    const unsigned r=((p>>11)*gain+(kGround>>11)*rest+128)>>8;
+    const unsigned g=(((p>>5)&63)*gain+((kGround>>5)&63)*rest+128)>>8;
+    const unsigned b=((p&31)*gain+(kGround&31)*rest+128)>>8;
+    row[x]=static_cast<uint16_t>((r<<11)|(g<<5)|b);
+   }
+  }
+ }
  demo_capture::remember(px,stride);
  // Only the creature's region changes from frame to frame; present the whole screen when a corner
  // label changed (or there is an error line), so the platform refreshes as little as possible.
  const char *cap=rig::caption(s->rig,s->activity);
  const uint32_t key=static_cast<uint32_t>(growlNow(s))|(static_cast<uint32_t>(s->character)<<8)|(static_cast<uint32_t>(dryNow(s))<<12)|(static_cast<uint32_t>(s->error?1+(-s->error)%7:0)<<13)|(static_cast<uint32_t>(cap[0]+cap[1]*3+cap[4])<<16);
- if(key!=s->hudKey||!s->sh){s->hudKey=key;P->screen_present(0,0,0,0);}
+ if(revealing||key!=s->hudKey||!s->sh){s->hudKey=revealing?~key:key;P->screen_present(0,0,0,0);}
  else P->screen_present(rig::kSX0,rig::kSY0,rig::kSX1-rig::kSX0,rig::kSY1-rig::kSY0);
 }
 int init(void *state,const resona_platform *platform){

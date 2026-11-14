@@ -135,3 +135,7 @@ DRY 现在直接对比未经滤波与限幅的吉他输入。
 Wah 系数每 16 个采样更新一次，采样计数跨音频处理块连续。
 
 松手直接弹也有四种音色。MOSS 圆润，VELVET 偏暗，CINDER 明亮，REED 带人声感。按住下方仍能扫 Wah，短按上方切换 DRY。
+
+## 0.5.4
+
+The original Creature artwork fades in after the eye blink. The mouth follows the Wah with less overshoot.
